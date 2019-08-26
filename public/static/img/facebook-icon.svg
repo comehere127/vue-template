@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Mobi.pay.zing.vn" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Game/Home/Login-methods" transform="translate(-66.000000, -367.000000)">
+            <g id="Button" transform="translate(35.000000, 357.000000)">
+                <rect id="Rectangle-2" fill="#39579A" x="0" y="0" width="290" height="60" rx="5"></rect>
+                <g id="Group-3" transform="translate(31.000000, 10.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                    <path d="M22.7361985,34.9998551 L22.7361985,21.3154082 L27.1586621,21.3154082 L27.8207694,15.982355 L22.7361985,15.982355 L22.7361985,12.5773599 C22.7361985,11.0333488 23.1490567,9.98102219 25.2809946,9.98102219 L28,9.97971838 L28,5.20991482 C27.529537,5.14515849 25.9156244,5 24.0379569,5 C20.1177575,5 17.4339009,7.48522339 17.4339009,12.0494582 L17.4339009,15.9824999 L13,15.9824999 L13,21.3155531 L17.4337614,21.3155531 L17.4337614,35 L22.7361985,34.9998551 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pay.zing.vn - Cổng thanh toán game chính thức của VNG</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- Muli Font -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700&subset=vietnamese" rel="stylesheet" />
+    <script type="text/javascript" src="//script.crazyegg.com/pages/scripts/0084/1830.js" async></script>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="https://pay.zing.vn/static/img/zing-logo.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Pay.zing.vn - Cổng thanh toán game chính thức của VNG" />
+    <link rel="apple-touch-icon-precomposed" href="https://pay.zing.vn/static/img/zing-logo.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="https://pay.zing.vn/static/img/zing-logo.png">
+    <meta name="msapplication-TileColor" content="#0e90d2">
+
+    <meta property="og:site_name" content="Pay.zing.vn" />
+	<meta property="og:type" content="article" />
+	<meta property="og:url" content="https://pay.mto.zing.vn" />
+	<meta property="og:title" content="TuDHM" />
+	<meta property="og:description" content="Cổng thanh toán game chính thức của VNG" />
+	<meta property="og:image" content="https://stc_cdn.vcdn.vn/mainsite/images/ttlm-banner-600x337.jpg" />
+
+<meta property="og:image:width" content="600" />
+<meta property="og:image:height" content="337" />
+
+    <style type="text/css">
+      html,
+      body {
+        font-family: Muli !important;
+      }
+      .box-loading:before {
+        content: '';
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+      }
+
+      .box-loading {
+        width: 300px;
+        height: 300px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 99999;
+      }
+
+      .box-loading.disapear {
+        animation: disapear 1s 1;
+      }
+
+      .box-loading.disapear:before {
+        display: none;
+      }
+
+      .box-loading.disapear .logo-load {
+        opacity: 0;
+        transition: 0.3s;
+      }
+
+      @keyframes disapear {
+        from {
+          transform: scale(1);
+          opacity: 1;
+          visibility: visible;
+        }
+
+        to {
+          transform: scale(10);
+          opacity: 0;
+          visibility: hidden;
+        }
+      }
+
+      .box-loading .inner {
+        width: 80%;
+        height: 80%;
+        background: rgba(0, 168, 251, 0.7);
+        position: absolute;
+        left: 10%;
+        top: 10%;
+        border-radius: 45%;
+        animation: spinning 1.5s infinite linear;
+      }
+
+      .box-loading .inner:last-child {
+        animation-delay: 0.3s;
+        height: 76%;
+        background: rgba(0, 159, 255, 0.77);
+      }
+
+      @keyframes spinning {
+        from {
+          transform: rotate(0deg) skewX(0deg) scale(1);
+        }
+
+        50% {
+          transform: rotate(180deg) skewX(5deg) scale(0.9);
+        }
+
+        to {
+          transform: rotate(360deg) skewX(0deg) scale(1);
+        }
+      }
+
+      .logo-load {
+        width: 140px;
+        height: 65px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+
+      .logo-load img {
+        width: 100%;
+      }
+
+      .logo-load p {
+        font-size: 12px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .logo-load p span {
+        letter-spacing: 1px;
+        width: 3px;
+        display: inline-block;
+        overflow: hidden;
+        animation: showdot 1s steps(3, end) infinite;
+        position: relative;
+        top: 3px;
+      }
+
+      @keyframes showdot {
+        from {
+          width: 3px;
+        }
+
+        50% {
+          width: 7px;
+        }
+
+        to {
+          width: 11px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .box-loading {
+          width: 200px;
+          height: 200px;
+        }
+
+        .logo-load {
+          width: 100px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="box-loading" id="preloader">
+      <div class="wave">
+        <div class="inner"></div>
+        <div class="inner"></div>
+      </div>
+      <div class="logo-load">
+        <img src="/static/img/zing-logo.png" alt="" />
+        <p>Đang tải trang<span>...</span></p>
+      </div>
+    </div>
+
+    <app></app>
+    <!-- built files will be auto injected -->
+    <script type="text/javascript">
+      var insertJs = function(s, srcArr) {
+        var src = srcArr[0]
+        var d = window.document
+        var js
+        var c = d.getElementsByTagName(s)
+        var fjs = c[c.length - 1];
+        if (d.getElementById(src)) {
+          return
+        }
+        js = d.createElement(s)
+        js.id = src
+        if (s === 'link') {
+          js.href = src + '?ts=' + new Date().getTime()
+          js.rel = 'stylesheet'
+        } else if (s === 'script') {
+          js.src = src + '?ts=' + new Date().getTime()
+        }
+        fjs.parentNode.insertBefore(js, fjs.nextSibling)
+        srcArr.shift()
+        if (srcArr.length > 0) {
+          insertJs(s, srcArr)
+        }
+      }
+      insertJs('link', '<%=files.css%>'.split(','))
+      insertJs('script', '<%=files.js%>'.split(','))
+	  </script>
+  </body>
+</html>

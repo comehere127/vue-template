@@ -1,0 +1,68 @@
+{
+  // ===
+  // Spacing
+  // ===
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  // ===
+  // Files
+  // ===
+  "files.exclude": {
+    "**/*.log": true,
+    "**/*.log*": true,
+    // "**/dist": true,
+    "**/coverage": true
+  },
+  "files.associations": {
+    ".markdownlintrc": "jsonc"
+  },
+  // ===
+  // Event Triggers
+  // ===
+  "editor.formatOnSave": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.run": "onSave",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "vue-html",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+  // ===
+  // HTML
+  // ===
+  "html.format.enable": false,
+  "vetur.validation.template": true,
+  // ===
+  // JS(ON)
+  // ===
+  "javascript.format.enable": true,
+  "json.format.enable": true,
+  "vetur.validation.script": true,
+  // ===
+  // CSS
+  // ===
+  "stylelint.enable": true,
+  "css.validate": true,
+  "scss.validate": true,
+  "vetur.validation.style": true,
+  // ===
+  // MARKDOWN
+  // ===
+  "[markdown]": {
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 80
+  },
+  "prettier.disableLanguages": [
+    // "vue"
+  ],
+  "prettier.printWidth": 120
+}
