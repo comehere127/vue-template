@@ -1,5 +1,5 @@
 {
-  "name": "vue-landing-page",
+  "name": "vue-template",
   "version": "1.2.0",
   "description": "GT template using VUE 2.0",
   "author": "tudhm <tudhm@vng.com.vn>",
@@ -33,6 +33,10 @@
     "vue",
     "element-ui"
   ],
+  "repository": {
+    "type": "github",
+    "url": "https://github.com/comehere127/vue-template.git"
+  },
   "dependencies": {
     "element-ui": "^2.11.1",
     "lodash": "^4.17.11",
