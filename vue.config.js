@@ -1,12 +1,37 @@
 'use strict'
 const path = require('path')
 const pkg = require('./package.json')
+
 function resolve(dir) {
   return path.join(__dirname, dir)
 }
 
 const name = pkg.name
 const port = 9527 // dev port
+/**
+ * Get current time
+ * @example 10:34:12 am
+ * @param {Date} date
+ * @returns {string}
+ */
+function getTime(date) {
+  var hours = date.getHours()
+  var minutes = date.getMinutes()
+  var seconds = date.getSeconds()
+  minutes = minutes < 10 ? '0' + minutes : minutes
+  seconds = seconds < 10 ? '0' + seconds : seconds
+  return `${hours}${minutes}${seconds}`
+}
+
+/**
+ * Get current date
+ * @example 13-09-2016
+ * @returns {string}
+ */
+function getDate() {
+  var currentDate = new Date()
+  return '-' + getTime(currentDate) + '-' + currentDate.getFullYear() + ('0' + (currentDate.getMonth() + 1)).slice(-2) + ('0' + currentDate.getDate()).slice(-2)
+}
 
 // All configuration item explanations can be find in https://cli.vuejs.org/config/
 module.exports = {
@@ -65,7 +90,22 @@ module.exports = {
         ].map(item => ({ ...item, flags: 'g' }))
       })
       .end()
-
+    // set svg-sprite-loader
+    config.module
+      .rule('svg')
+      .exclude.add(resolve('src/icons'))
+      .end()
+    config.module
+      .rule('icons')
+      .test(/\.svg$/)
+      .include.add(resolve('src/icons'))
+      .end()
+      .use('svg-sprite-loader')
+      .loader('svg-sprite-loader')
+      .options({
+        symbolId: 'icon-[name]'
+      })
+      .end()
     config.module
       .rule('js')
       .test(/\.js$/)
@@ -125,20 +165,27 @@ module.exports = {
         args[0].minify.removeAttributeQuotes = false
         return args
       })
-    })
-    config.when(process.env.NODE_ENV !== 'development', config => {
-      config.module.rule('vue').uses.delete('cache-loader')
-      config.module.rule('js').uses.delete('cache-loader')
-      // config
-      //   .plugin('ScriptExtHtmlWebpackPlugin')
-      //   .after('html')
-      //   .use('script-ext-html-webpack-plugin', [
-      //     {
-      //       // `runtime` must same as runtimeChunk name. default is `runtime`
-      //       inline: /runtime.js$/
-      //     }
-      //   ])
-      //   .end()
+
+      config.plugin('named-chunks').use(require('webpack/lib/NamedChunksPlugin'), [
+        chunk => {
+          if (chunk.name) {
+            return chunk.name
+          }
+          const modules = Array.from(chunk.modulesIterable)
+          const seen = new Set()
+          let chunkName = modules[0].id
+          if (modules.length > 1) {
+            const hash = require('hash-sum')
+            const joinedHash = hash(modules.map(m => m.id).join('_') + getDate())
+            let len = 8
+            while (seen.has(joinedHash.substr(0, len))) len++
+            seen.add(joinedHash.substr(0, len))
+            chunkName = `chunk-${joinedHash.substr(0, len)}`
+          }
+          chunkName += getDate()
+          return chunkName
+        }
+      ])
       config.optimization.splitChunks({
         chunks: 'all',
         cacheGroups: {
