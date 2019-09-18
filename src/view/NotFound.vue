@@ -27,17 +27,13 @@
   </div>
 </template>
 <script>
-import { mapActions } from 'vuex'
 export default {
   page: {
     title: 'Pay.zing.vn - Cổng thanh toán game chính thức của VNG',
     meta: [{ name: 'description', content: 'Pay.zing.vn - Cổng thanh toán game chính thức của VNG' }]
   },
   created() {
-    this.doHidePreloader(true)
-  },
-  methods: {
-    ...mapActions(['doHidePreloader'])
+    this.$store.dispatch('globalConfig/doHidePreloader', true)
   }
 }
 </script>

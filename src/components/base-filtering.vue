@@ -14,8 +14,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex'
-// import { MOBILE, DESKTOP } from '@/constants'
+import { mapGetters } from 'vuex'
 export default {
   props: {
     filterChanged: {
@@ -32,28 +31,12 @@ export default {
   computed: {
     ...mapGetters(['getIsMobile', 'getIsDesktop', 'getIsTablet'])
   },
-  watch: {
-    gameType(val) {
-      switch (val) {
-        case 'all':
-          this.selectGameListAll()
-          break
-        case 'mobile':
-          this.selectGameListMobile()
-          break
-        case 'pc':
-          this.selectGameListPC()
-          break
-      }
-    }
-  },
   created() {
     // this.gameType = this.getIsDesktop ? DESKTOP : MOBILE
     this.gameType = 'all'
     this.className = this.handleDetectClassName()
   },
   methods: {
-    ...mapActions(['selectGameListAll', 'selectGameListPC', 'selectGameListMobile']),
     handleDetectClassName() {
       if (this.getIsMobile) {
         return 'button-groupMB'

@@ -27,11 +27,8 @@ const mutations = {
 
 const actions = {
   detectDevice({ commit }) {
-    return new Promise(resolve => {
-      Vue.config.device = currentDevice()
-      commit('DETECT_DEVICE', Vue.config.device)
-      resolve()
-    })
+    Vue.config.device = currentDevice()
+    commit('DETECT_DEVICE', Vue.config.device)
   },
   doHidePreloader({ state }, isHiddenFooter) {
     if (isHiddenFooter) {
@@ -56,27 +53,9 @@ const actions = {
   }
 }
 
-const getters = {
-  globalConfig(state) {
-    return state
-  },
-  getCurrentDevice(state) {
-    return state.device
-  },
-  getIsMobile(state) {
-    return state.isMobile
-  },
-  getIsDesktop(state) {
-    return state.isDesktop
-  },
-  getIsTablet(state) {
-    return state.isTablet
-  }
-}
-
 export default {
+  namespaced: true,
   state,
   mutations,
-  actions,
-  getters
+  actions
 }

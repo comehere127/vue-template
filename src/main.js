@@ -31,13 +31,12 @@ Vue.config.productionTip = process.env.ENV !== 'development'
         const router = require('@/router').default
         const { sync } = require('vuex-router-sync')
         sync(store, router)
-        const detectPromise = store.dispatch('detectDevice')
+        const detectPromise = store.dispatch('globalConfig/detectDevice')
         // hook(detectPromise)
 
         // main component
         const App = require('@/App').default
         detectPromise.then(() => {
-          store.commit('UPDATE_GTCORE_STATUS', true)
           const app = new Vue({
             router,
             store,

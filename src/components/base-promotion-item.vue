@@ -21,7 +21,6 @@
   </el-card>
 </template>
 <script>
-import { mapActions } from 'vuex'
 export default {
   props: {
     title: {
@@ -62,16 +61,8 @@ export default {
     img.onload = this.handleLoadedImage
   },
   methods: {
-    ...mapActions(['redirectToPayment']),
     handlePaymentClick() {
-      this.redirectToPayment({
-        data: {
-          appId: this.appId,
-          event: 'click',
-          status: 'success'
-        },
-        redirectUrl: this.webpayUrl
-      })
+      gtCore.request.redirectTo(this.webpayUrl)
     },
     handleLoadedImage() {
       this.isLoading = false

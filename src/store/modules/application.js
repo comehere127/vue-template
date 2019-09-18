@@ -76,18 +76,10 @@ const actions = {
     })
   }
 }
-const getters = {
-  getApplicationList(state) {
-    return state.applicationData
-  },
-  getUserDemand(state) {
-    return state.userDemand
-  }
-}
 
 export default {
+  namespaced: true,
   state,
   mutations,
-  actions,
-  getters
+  actions
 }

@@ -60,10 +60,9 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 import { toInteger, difference, keys, sortBy, reverse, concat, find, filter } from 'lodash'
 import { MOBILE, DESKTOP, TABLET } from '@/constants'
-// import Firework from 'components/firework'
 export default {
   // components: { Firework },
   page: {
@@ -103,8 +102,8 @@ export default {
       this.className = 'landing'
     }
     this.currentFilter = this.getCurrentDevice
-    this.reqApplicationList().then(() => {
-      this.getUserDemandStored().then(() => {
+    this.$store.dispatch('application/reqApplicationList').then(() => {
+      this.$store.dispatch('application/getUserDemandStored').then(() => {
         let userDemand = this.getUserDemand
         let appData = this.getApplicationList
         if (userDemand !== false) {
@@ -116,13 +115,12 @@ export default {
           appData = reverse(sortBy(appData, ['point']))
         }
         this.ApplicationListData = appData
-        this.doHidePreloader(false)
+        this.$store.dispatch('globalConfig/doHidePreloader', false)
         this.handleDataSource(this.currentFilter, this.ApplicationListData)
       })
     })
   },
   methods: {
-    ...mapActions(['reqApplicationList', 'getUserDemandStored', 'doHidePreloader']),
     handleFiltering(val) {
       this.currentFilter = val
       this.currentPage = 1

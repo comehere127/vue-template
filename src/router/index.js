@@ -33,12 +33,10 @@ const router = new VueRouter({
   routes
 })
 router.beforeEach((to, from, next) => {
-  store.dispatch('changeRouteLoading', true).then(() => {
-    next()
-  })
+  store.dispatch('routes/changeRouteLoading', true).then(next)
 })
 router.afterEach(() => {
-  store.dispatch('changeRouteLoading', false)
+  store.dispatch('routes/changeRouteLoading', false)
 })
 
 export default router

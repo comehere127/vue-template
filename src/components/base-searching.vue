@@ -21,7 +21,7 @@
   </el-autocomplete>
 </template>
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 export default {
   props: {
     dataSource: {
@@ -42,7 +42,6 @@ export default {
     ...mapGetters(['getIsDesktop'])
   },
   methods: {
-    ...mapActions(['doSelectGameBySearch', 'setUserDemand']),
     focusAction() {
       this.$el.classList.add('isFocus')
     },
@@ -63,23 +62,19 @@ export default {
     handleSelect(item) {
       this.dataInput = item.appName
       this.appSelected = item
-      this.doSelectGameBySearch(this.appSelected.appId).then(() =>
-        this.setUserDemand({
-          appId: this.appSelected.appId,
-          redirectUrl: this.appSelected.payUrl
-        })
-      )
+      this.$store.dispatch('application/setUserDemand', {
+        appId: this.appSelected.appId,
+        redirectUrl: this.appSelected.payUrl
+      })
     },
     handleEnter() {
       if (gtCore.common.isInvalid(this.appSelected) || gtCore.common.slugData(this.appSelected.appName) !== gtCore.common.slugData(this.dataInput)) {
         this.$message.error(this.$t('SearchingSubmitError'))
       } else {
-        this.doSelectGameBySearch(this.appSelected.appId).then(() =>
-          this.setUserDemand({
-            appId: this.appSelected.appId,
-            redirectUrl: this.appSelected.payUrl
-          })
-        )
+        this.$store.dispatch('application/setUserDemand', {
+          appId: this.appSelected.appId,
+          redirectUrl: this.appSelected.payUrl
+        })
       }
     }
   }

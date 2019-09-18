@@ -26,7 +26,6 @@
   </el-card>
 </template>
 <script>
-import { mapActions } from 'vuex'
 export default {
   props: {
     title: {
@@ -63,24 +62,17 @@ export default {
     img.onload = this.handleLoadedImage
   },
   methods: {
-    ...mapActions(['setUserDemand', 'doSelectGameByBanner', 'doSelectGameByBannerButton']),
     clickBanner() {
-      console.log('clickBanner')
-      this.doSelectGameByBanner(this.appId).then(() =>
-        this.setUserDemand({
-          appId: this.appId,
-          redirectUrl: this.webpayUrl
-        })
-      )
+      this.$store.dispatch('application/setUserDemand', {
+        appId: this.appId,
+        redirectUrl: this.webpayUrl
+      })
     },
     clickBannerButton() {
-      console.log('clickBannerButton')
-      this.doSelectGameByBannerButton(this.appId).then(() =>
-        this.setUserDemand({
-          appId: this.appId,
-          redirectUrl: this.webpayUrl
-        })
-      )
+      this.$store.dispatch('application/setUserDemand', {
+        appId: this.appId,
+        redirectUrl: this.webpayUrl
+      })
     },
     handleLoadedImage() {
       this.isLoading = false
